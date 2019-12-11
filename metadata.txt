@@ -16,8 +16,8 @@ email=steven.hill@uni-wuerzburg.de
 
 about=A simple to use QGIS plugin for supervised classification of remote sensing images
 
-tracker=http://bugs
-repository=http://repo
+tracker=https://github.com/SteveMHill/ClassificationTool/issues
+repository=https://github.com/SteveMHill/ClassificationTool
 # End of mandatory metadata
 
 # Recommended items:
@@ -28,7 +28,7 @@ repository=http://repo
 # Tags are comma separated with spaces allowed
 tags=python
 
-homepage=http://homepage
+homepage=https://github.com/SteveMHill/ClassificationTool
 category=Plugins
 icon=icon.png
 # experimental flag
