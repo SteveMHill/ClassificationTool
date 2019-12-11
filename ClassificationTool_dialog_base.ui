@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ClassificationToolDialogBase</class>
+ <widget class="QDialog" name="ClassificationToolDialogBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>579</width>
+    <height>502</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ClassificationTool</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>ClassificationTool</string>
+      </attribute>
+      <widget class="QPushButton" name="bt_run">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>400</y>
+         <width>80</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Run</string>
+       </property>
+      </widget>
+      <widget class="QDialogButtonBox" name="button_box">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>400</y>
+         <width>166</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel</set>
+       </property>
+      </widget>
+      <widget class="QProgressBar" name="progressBar">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>350</y>
+         <width>531</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+       <property name="format">
+        <string>%p%</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>248</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Training data (.shp):                                 </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>100</y>
+         <width>248</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Raster file (.tif):                                         </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>248</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Classification Method:                            </string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>200</y>
+         <width>181</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Field:                                                             </string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_field">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>200</y>
+         <width>285</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777200</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_class">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>50</y>
+         <width>285</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_inRaster">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>100</y>
+         <width>285</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="tb_inRaster">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>100</y>
+         <width>25</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_inVector">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>150</y>
+         <width>285</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="tb_inVector">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>150</y>
+         <width>25</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="le_outRaster">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>250</y>
+         <width>285</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="tb_outRaster">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>250</y>
+         <width>25</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>250</y>
+         <width>248</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Output raster (.tif):                                  </string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Options</string>
+      </attribute>
+      <widget class="QTabWidget" name="tabWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>561</width>
+         <height>461</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab_7">
+        <attribute name="title">
+         <string>General</string>
+        </attribute>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>361</width>
+           <height>241</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Accuracy Assessment       </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="check_acc">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>16</width>
+                <height>16</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="label_12">
+              <property name="text">
+               <string>Training data (%)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_train">
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>80</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>Testing data (%)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_test">
+              <property name="wrapping">
+               <bool>false</bool>
+              </property>
+              <property name="frame">
+               <bool>true</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::UpDownArrows</enum>
+              </property>
+              <property name="correctionMode">
+               <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>20</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>Stratified split               </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="check_strat">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Max pixel per class</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_max_pix">
+              <property name="minimum">
+               <number>-1</number>
+              </property>
+              <property name="maximum">
+               <number>1000000000</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <item>
+             <widget class="QLabel" name="label_16">
+              <property name="text">
+               <string>Number of tiles</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_tiles">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_4">
+        <attribute name="title">
+         <string>KNN</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>361</width>
+           <height>219</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>n_neighbors</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_15">
+              <property name="text">
+               <string>weights</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_17">
+              <property name="text">
+               <string>algorithm</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>metric</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_18">
+              <property name="text">
+               <string>leaf_size</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_19">
+              <property name="text">
+               <string>p</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_20">
+              <property name="text">
+               <string>n_jobs</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QSpinBox" name="sb_kn_n">
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_kn_weights"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_kn_algo"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_kn_metric"/>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_kn_leafsize">
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_kn_pvalue">
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_kn_njobs">
+              <property name="minimum">
+               <number>-1</number>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_5">
+        <attribute name="title">
+         <string>RF</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>361</width>
+           <height>376</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_12">
+            <item>
+             <widget class="QLabel" name="label_39">
+              <property name="text">
+               <string>n_estimator</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>criterion</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_41">
+              <property name="text">
+               <string>bootstrap</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_44">
+              <property name="text">
+               <string>min_samples_split</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_45">
+              <property name="text">
+               <string>min_samples_leaf</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_51">
+              <property name="text">
+               <string>min_weght_fraction_leaf</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_52">
+              <property name="text">
+               <string>max_features</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_22">
+              <property name="text">
+               <string>max_leaf_nodes</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_53">
+              <property name="text">
+               <string>min_impurity_decrease</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_54">
+              <property name="text">
+               <string>max_depth</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_55">
+              <property name="text">
+               <string>n_jobs</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_13">
+            <item>
+             <widget class="QSpinBox" name="sb_rf_nestimator">
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_rf_criterion"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_rf_bootstrap"/>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_rf_min_sample"/>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_rf_min_samples_leaf"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="sb_rf_min_weight_fraction_leaf"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_rf_max_features"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="le_rf_max_leaf_nodes"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="sb_rf_min_impurity_decrease"/>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="le_rf_max_depth"/>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_rf_njobs">
+              <property name="minimum">
+               <number>-1</number>
+              </property>
+              <property name="maximum">
+               <number>10000</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_6">
+        <attribute name="title">
+         <string>SVC</string>
+        </attribute>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>351</width>
+           <height>376</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_16">
+            <item>
+             <widget class="QLabel" name="label_61">
+              <property name="text">
+               <string>C</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_65">
+              <property name="text">
+               <string>kernel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_69">
+              <property name="text">
+               <string>degree</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_70">
+              <property name="text">
+               <string>coef0</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_71">
+              <property name="text">
+               <string>shrinking</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_75">
+              <property name="text">
+               <string>decision_function_shape </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_76">
+              <property name="text">
+               <string>class_weight</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_72">
+              <property name="text">
+               <string>max_iter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_77">
+              <property name="text">
+               <string>tol</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_78">
+              <property name="text">
+               <string>probability</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_79">
+              <property name="text">
+               <string>cache_size</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_80">
+              <property name="text">
+               <string>random_state</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_17">
+            <item>
+             <widget class="QDoubleSpinBox" name="sb_sv_c">
+              <property name="maximum">
+               <double>10000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_sv_kernel"/>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_sv_degree"/>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="sb_sv_coef">
+              <property name="maximum">
+               <double>1000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_sv_shrink"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_sv_dcs"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_sv_classweight"/>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_sv_maxiter">
+              <property name="minimum">
+               <number>-1</number>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="sb_sv_tol">
+              <property name="decimals">
+               <number>3</number>
+              </property>
+              <property name="maximum">
+               <double>10000.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="cb_sv_probability"/>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="sb_sv_cache_size">
+              <property name="minimum">
+               <number>-1</number>
+              </property>
+              <property name="maximum">
+               <number>1000000</number>
+              </property>
+              <property name="displayIntegerBase">
+               <number>10</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="le_sv_randstate"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Log</string>
+      </attribute>
+      <widget class="QWidget" name="layoutWidget_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>531</width>
+         <height>351</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label_13">
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="text">
+           <string>Processing Log</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::AutoText</enum>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QListWidget" name="process_list">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>bt_run</tabstop>
+  <tabstop>tabWidget_2</tabstop>
+  <tabstop>sb_kn_n</tabstop>
+  <tabstop>cb_kn_weights</tabstop>
+  <tabstop>cb_kn_algo</tabstop>
+  <tabstop>cb_kn_metric</tabstop>
+  <tabstop>sb_kn_leafsize</tabstop>
+  <tabstop>sb_kn_pvalue</tabstop>
+  <tabstop>sb_kn_njobs</tabstop>
+  <tabstop>sb_rf_nestimator</tabstop>
+  <tabstop>cb_rf_bootstrap</tabstop>
+  <tabstop>sb_rf_min_sample</tabstop>
+  <tabstop>sb_rf_min_samples_leaf</tabstop>
+  <tabstop>sb_rf_min_weight_fraction_leaf</tabstop>
+  <tabstop>cb_rf_max_features</tabstop>
+  <tabstop>sb_rf_min_impurity_decrease</tabstop>
+  <tabstop>le_rf_max_depth</tabstop>
+  <tabstop>sb_rf_njobs</tabstop>
+  <tabstop>sb_sv_c</tabstop>
+  <tabstop>cb_sv_kernel</tabstop>
+  <tabstop>sb_sv_degree</tabstop>
+  <tabstop>sb_sv_coef</tabstop>
+  <tabstop>cb_sv_shrink</tabstop>
+  <tabstop>cb_sv_dcs</tabstop>
+  <tabstop>cb_sv_classweight</tabstop>
+  <tabstop>sb_sv_maxiter</tabstop>
+  <tabstop>sb_sv_tol</tabstop>
+  <tabstop>cb_sv_probability</tabstop>
+  <tabstop>sb_sv_cache_size</tabstop>
+  <tabstop>le_sv_randstate</tabstop>
+  <tabstop>process_list</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>button_box</sender>
+   <signal>rejected()</signal>
+   <receiver>ClassificationToolDialogBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>291</x>
+     <y>438</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_box</sender>
+   <signal>accepted()</signal>
+   <receiver>ClassificationToolDialogBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>291</x>
+     <y>438</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
