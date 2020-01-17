@@ -1,15 +1,14 @@
 import numpy as np
 import math
 import pandas as pd
-import geopandas as gpd
 import rasterio
-import pyproj
 import os
+import fiona
 from time import gmtime, strftime, time
 from rasterio.plot import reshape_as_raster, reshape_as_image
 from rasterio.mask import mask
 from rasterio.windows import Window
-from shapely.geometry import mapping
+from shapely.geometry import mapping, shape
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
@@ -106,22 +105,26 @@ class Worker(QThread):
             strftime("%Y-%m-%d %H:%M:%S", gmtime()), "Open vector file: " + train_shp
         )
 
-        shapefile = gpd.read_file(train_shp)
+        field_data = []
+        geoms = []
+        with fiona.open(train_shp, 'r') as source:
+            for f in source:
+                geoms.append( shape(f['geometry']))
+                field_data.append(f['properties'][self.fields])
 
         labelencoder = LabelEncoder()
 
         #### TODO: special case self.fields == 'ClassificationTool_encoding'
 
-        shapefile["ClassificationTool_encoding"] = labelencoder.fit_transform(
-            shapefile[self.fields]
-        )
+        fde = labelencoder.fit_transform(field_data)
+        shp_data = pd.DataFrame({self.fields: field_data, 'CTencoding': fde})
         self.shp_stats = (
-            shapefile.groupby([self.fields, "ClassificationTool_encoding"])
+            shp_data.groupby([self.fields , 'CTencoding'])
             .size()
             .reset_index()
             .rename(columns={0: "Number of Polygons"})
         )
-        geoms = shapefile.geometry.values
+        #geoms = shapefile.geometry.values
 
         self.signals.status.emit(
             strftime("%Y-%m-%d %H:%M:%S", gmtime()),
@@ -131,10 +134,10 @@ class Worker(QThread):
             img_bands = src.count
             crs = src.crs
 
-        p1 = pyproj.Proj(crs)
-        p2 = pyproj.Proj(shapefile.crs)
-        if p1.srs != p2.srs:
-            raise RuntimeError("Error: data sets have different projections")
+        #p1 = pyproj.Proj(crs)
+        #p2 = pyproj.Proj(shapefile.crs)
+        #if p1.srs != p2.srs:
+        #    raise RuntimeError("Error: data sets have different projections")
 
         X = np.array([]).reshape(0, img_bands)
         y = np.array([], dtype=np.int8)
@@ -157,7 +160,7 @@ class Worker(QThread):
                     out_image_reshaped = out_image_reshaped[np.random.choice(out_image_reshaped.shape[0], self.max_pix ,replace=False)]
                 y = np.append(
                     y,
-                    [shapefile["ClassificationTool_encoding"][index]]
+                    [fde[index]]
                     * out_image_reshaped.shape[0],
                 )
 
@@ -216,7 +219,7 @@ class Worker(QThread):
         if self.acc == True:
             y_pred = classifier.predict(X_test)
             cm = metrics.confusion_matrix(y_test, y_pred)
-            stat_sort = self.shp_stats.sort_values("ClassificationTool_encoding")
+            stat_sort = self.shp_stats.sort_values("CTencoding")
 
             cmpd = pd.DataFrame(
                 data=cm,
