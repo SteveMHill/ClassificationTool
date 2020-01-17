@@ -46,7 +46,7 @@ The ClassificationTool requires the following python packages:
 
 - [scikit-learn] (https://scikit-learn.org)
 - [rasterio] (https://rasterio.readthedocs.io/en/stable/)
-- [geopandas] (http://geopandas.org/)
+- [fiona] (https://github.com/Toblerity/Fiona)
 - [pandas] (https://pandas.pydata.org/)
 
 ### Installation
@@ -57,7 +57,7 @@ The ClassificationTool requires the following python packages:
 
 Use pip and install additional packages required:
 
-`pip3 install pandas geopandas rasterio scikit-learn`
+`pip3 install pandas Fiona rasterio scikit-learn`
 
 
 ##### Windows
@@ -65,7 +65,7 @@ Use pip and install additional packages required:
 1. Close QGIS, if it is open.
 2. Start the OSGeo4W Shell with admin rights
 3. Enter `call py3_env.bat` to activate the Python 3 environment
-4. Enter `pip3 install pandas geopandas rasterio scikit-learn`
+4. Enter `pip3 install pandas Fiona rasterio scikit-learn`
 
 
 #### Install plugin
